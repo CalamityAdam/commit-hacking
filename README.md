@@ -1,9 +1,10 @@
 # Commit Hacking
 [example](https://github.com/CalamityAdam?tab=overview&from=2020-12-01&to=2020-12-31)
+(i use fish shell)
 
 2020 - months with 31 days - 01 03 05 07 08 10 12
 ```bash
-for i in 1 2 3 4 5; for m in 01; for d in 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31; git commit -m 2020-$m-$d --date="2020-$m-$d 04:56:12" --allow-empty; end; end; end;
+for i in 1 2 3 4 5; for m in 05; for d in 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31; git commit -m 2020-$m-$d --date="2020-$m-$d 04:56:12" --allow-empty; end; end; end; git push;
 ```
 
 2020 - months with 30 days
@@ -110,4 +111,34 @@ for i in 1 2 3 4 5; for m in 01; for d in 02 04 06 08 10 12 14 16 18 20 22 24 26
 
 ```bash
 for i in 1 2 3 4 5; for m in 12; for d in 01 03 05 07 09 11 13 15 17 19 21 23 25 27 29 31; git commit -m 2017-$m-$d --date="2017-$m-$d 04:56:12" --allow-empty; end; end; end;
+```
+
+
+# super mega script to fill up a full year with 20 commits each day
+[do it for the lulz](https://github.com/CalamityAdam?tab=overview&from=2000-12-01&to=2000-12-31)
+currently set for the year 2020, which is a leap year. the last loop is february, remove `29` from that loop for a non leap year. this takes about 6 minutes to run, and pushes the commits after every month to ensure all commits are counted. this is 7000+ commits, with over 200 individual pushes, so be patient!
+
+```bash
+# loop 20 times
+for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20;
+  # for all months with 31 days
+  for m in 01 03 05 07 08 10 12;
+    for d in 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31;
+      # empty commit, manually set date and add commit message of that date. (replace 2000 in both places for different year)
+      git commit -m 2020-$m-$d --date="2020-$m-$d 04:56:12" --allow-empty;
+    end; git push;
+  end;
+  # for all months with 30 days
+  for m in 04 06 09 11;
+    for d in 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30;
+      git commit -m 2020-$m-$d --date="2020-$m-$d 04:56:12" --allow-empty;
+    end; git push;
+  end;
+  # for february
+  for m in 02;
+    for d in 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29; # <- remove 29 for a non leap year
+      git commit -m 2020-$m-$d --date="2020-$m-$d 04:56:12" --allow-empty;
+    end; git push;
+  end;
+end;
 ```
