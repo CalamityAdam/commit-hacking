@@ -116,7 +116,10 @@ for i in 1 2 3 4 5; for m in 12; for d in 01 03 05 07 09 11 13 15 17 19 21 23 25
 
 # super mega script to fill up a full year with 20 commits each day
 [do it for the lulz](https://github.com/CalamityAdam?tab=overview&from=2000-12-01&to=2000-12-31)
-currently set for the year 2020, which is a leap year. the last loop is february, remove `29` from that loop for a non leap year. this takes about 6 minutes to run, and pushes the commits after every month to ensure all commits are counted. this is 7000+ commits, with over 200 individual pushes, so be patient!
+
+currently set for the year 2020, which is a leap year. the last loop is february, remove `29` from that loop for a non leap year.
+
+this takes about 7 minutes to run, and pushes the commits after every month to ensure all commits are counted. this is 7000+ commits, with over 200 individual pushes, so be patient!
 
 ```bash
 # loop 20 times
